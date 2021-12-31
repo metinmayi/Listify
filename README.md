@@ -17,3 +17,6 @@ This project is being created for my own educational purposes.
 * Mark/unmark items as purchased.
 * Create/share shoppinglists with friends/family. If they have an account, you can grant them access to edit and read your lists.
 * If you accidentally remove a list, don't worry, they're available and able to be restored through the "Old Lists" section.
+
+## Wireframe
+https://www.figma.com/file/upRcLiZ0UgUmq3n62pXXVk/React-Listify?node-id=0%3A1
