@@ -1,15 +1,18 @@
+import styled from "styled-components";
 const DefaultButton = ({ text }) => {
 	return (
 		<>
-			<button
-				className="DefaultButton"
-				type="submit"
-				width="100px"
-				height="100px">
+			<LoginButton className="DefaultButton" type="submit">
 				{text}
-			</button>
+			</LoginButton>
 		</>
 	);
 };
 
 export default DefaultButton;
+const LoginButton = styled.button`
+	background-color: #64b9ee;
+	margin-top: 5px;
+	height: 25%;
+	border: none;
+`;
