@@ -12,7 +12,7 @@ const DefaultButton = ({ text }) => {
 export default DefaultButton;
 const LoginButton = styled.button`
 	background-color: #64b9ee;
+	border-radius: 50px;
 	margin-top: 5px;
-	height: 25%;
 	border: none;
 `;
