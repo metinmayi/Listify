@@ -13,6 +13,6 @@ export default LoginInputBox;
 const InputStyle = styled.input`
 	background-color: rgba(183, 181, 181, 0.5);
 	border-radius: 50px;
-	height: 20%;
+	height: 5vh;
 	border: none;
 `;

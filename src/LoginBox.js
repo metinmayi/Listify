@@ -7,7 +7,6 @@ const LoginBox = () => {
 		<div className="LoginBox">
 			<LoginInputBox label="E-mail" type="text" />
 			<LoginInputBox label="Password" type="password" />
-			<DefaultButton text="Login" />
 		</div>
 	);
 };

@@ -15,4 +15,8 @@ const LoginButton = styled.button`
 	border-radius: 50px;
 	margin-top: 5px;
 	border: none;
+	height: 5vh;
+	width: 50%;
+	font-size:1.5rem;
 `;
+ 
