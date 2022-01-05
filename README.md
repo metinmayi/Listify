@@ -1,4 +1,4 @@
-# React project: Listify
+# React project: Listify (Still developing)
 
 A shoppinglist application where you can create and share shoppinglists with friends and family!
 
