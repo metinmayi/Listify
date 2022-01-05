@@ -1,9 +1,13 @@
-const MainPage = () => {
-    return (
-        <h1>
-            MainPage
-        </h1>
-    )
-}
+import Footer from "./Footer.js";
+import Header from "./Header.js";
 
-export default MainPage
+const MainPage = () => {
+	return (
+		<div className="Page">
+			<Header />
+			<Footer />
+		</div>
+	);
+};
+
+export default MainPage;
