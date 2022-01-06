@@ -9,7 +9,6 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<LoginPage />} />
-					<Route path="/mainpage" element={<MainPage />} />
 					<Route path="*" element={<Missing />} />
 				</Routes>
 			</BrowserRouter>
