@@ -1,9 +1,9 @@
 import styled from "styled-components";
-const Input = ({ label, type, id }) => {
+const Input = ({ label, type, id, onKeyPress }) => {
 	return (
 		<>
 			<label htmlFor="input">{label}</label>
-			<InputStyle type={type} id={id} />
+			<InputStyle type={type} id={id} onKeyPress={onKeyPress} />
 		</>
 	);
 };
