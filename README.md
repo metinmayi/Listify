@@ -9,7 +9,7 @@ Technologies used in this project:
 * Express
 
 ## Authentication
-I've chosen to authenticate users through my API. This is to demonstrate that my knowledge of managing a database and fetching data.
+I've chosen to authenticate users through my API. This is to demonstrate my knowledge of managing a database and fetching data.
 
 ## API
 I created my own API that I've hosted through Heroku. It can be found here:
