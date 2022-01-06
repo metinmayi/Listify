@@ -8,7 +8,7 @@ Technologies used in this project:
 * MongoDB
 * Express
 
-##Authentication
+## Authentication
 I've chosen to authenticate users through my API. This is to demonstrate that my knowledge of managing a database and fetching data.
 
 ## API
