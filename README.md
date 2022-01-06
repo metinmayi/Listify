@@ -25,6 +25,7 @@ This project is being created for my own educational purposes.
 * If you accidentally remove a list, don't worry, they're available and able to be restored through the "Old Lists" section.
 
 
-
 ## Wireframe
 https://www.figma.com/file/upRcLiZ0UgUmq3n62pXXVk/React-Listify?node-id=0%3A1
+## Trello Board
+https://trello.com/b/tvQNl491/react-projekt
