@@ -1,10 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, Routes, Route, BrowserRouter } from "react-router-dom";
 import LoginPage from "./LoginPage";
+import MainPage from "./MainPage";
+import Missing from "./Missing";
 
 function App() {
 	return (
 		<div className="App">
-			<LoginPage></LoginPage>
+			<BrowserRouter>
+				<Routes>
+					<Route path="/" element={<LoginPage />} />
+					<Route path="*" element={<Missing />} />
+				</Routes>
+			</BrowserRouter>
 		</div>
 	);
 }

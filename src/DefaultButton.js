@@ -1,15 +1,19 @@
-const DefaultButton = ({ text }) => {
+import styled from "styled-components";
+const PrimaryButton = ({ children, onClick }) => {
 	return (
-		<>
-			<button
-				className="DefaultButton"
-				type="submit"
-				width="100px"
-				height="100px">
-				{text}
-			</button>
-		</>
+		<PrimaryButtonWrapper type="submit" onClick={onClick}>
+			{children}
+		</PrimaryButtonWrapper>
 	);
 };
 
-export default DefaultButton;
+export default PrimaryButton;
+const PrimaryButtonWrapper = styled.button`
+	background-color: #64b9ee;
+	border-radius: 50px;
+	margin-top: 5px;
+	border: none;
+	height: 5vh;
+	width: 50%;
+	font-size: 1.5rem;
+`;
