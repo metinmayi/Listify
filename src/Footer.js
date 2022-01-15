@@ -5,6 +5,7 @@ const Footer = () => {
 			<FooterP>Looking for help?</FooterP>
 			<FooterP>Contact me at</FooterP>
 			<FooterP>metinmayi@gmail.com</FooterP>
+			<br />
 		</FooterComponent>
 	);
 };
