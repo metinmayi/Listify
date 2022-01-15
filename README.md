@@ -1,6 +1,10 @@
-# React project: Listify (Still developing)
+# React project: Listify (under development)
+### Login details: 
+* username: admin
+* password: HireMe
 
 A shoppinglist application where you can create and share shoppinglists with friends and family!
+
 
 Technologies used in this project:
 * React
