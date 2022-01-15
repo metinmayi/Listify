@@ -1,10 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const ShoppingList = () => {
 	return (
 		<List>
-			<ListHeader>ICA</ListHeader>
+			<Link className="Link" to="/shoppinglist">
+				ICA
+			</Link>
 			<ListItems>Kött, Blåbär, Kyckling...</ListItems>
 		</List>
 	);
@@ -12,10 +15,6 @@ const ShoppingList = () => {
 
 export default ShoppingList;
 
-const ListHeader = styled.h3`
-	font-size: 2rem;
-	margin-block-end: 0;
-`;
 const ListItems = styled.h6`
 	margin-block-start: 0;
 `;

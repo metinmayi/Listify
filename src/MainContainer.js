@@ -2,29 +2,29 @@ import React from "react";
 import styled from "styled-components";
 import ShoppingList from "./ShoppingList";
 
-const MainContainer = ({ page }) => {
+const ListOfLists = ({ page }) => {
 	return (
-		<Container>
-			<ContainerTitle>{page}</ContainerTitle>
+		<ListOfListsContainer>
+			<ListOfListsTitle>{page}</ListOfListsTitle>
 			<ShoppingList></ShoppingList>
 			<ShoppingList></ShoppingList>
 			<ShoppingList></ShoppingList>
 			<ShoppingList></ShoppingList>
 			<ShoppingList></ShoppingList>
 			<ShoppingList></ShoppingList>
-		</Container>
+		</ListOfListsContainer>
 	);
 };
 
-export default MainContainer;
+export default ListOfLists;
 
-const Container = styled.div`
+const ListOfListsContainer = styled.div`
 	height: 60vh;
 	width: 90%;
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	padding: 2%;
 	overflow: scroll;
 `;
-const ContainerTitle = styled.h2`
+const ListOfListsTitle = styled.h2`
 	text-align: center;
 `;

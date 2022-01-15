@@ -44,3 +44,8 @@ body {
 		width: 50%;
 	}
 }
+.Link {
+	font-family: "Roboto slab";
+	text-decoration: none;
+	color: black;
+}

@@ -5,11 +5,11 @@ import Footer from "./Footer";
 
 const ShoppingListPage = () => {
 	return (
-		<>
+		<div className="Page">
 			<Header />
 			<Main />
 			<Footer />
-		</>
+		</div>
 	);
 };
 

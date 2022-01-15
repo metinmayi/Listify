@@ -50,20 +50,19 @@ const LoginPage = (e) => {
 						<h2>Sign in to Listify</h2>
 					</div>
 					<LoginBox>
-						<form>
-							<Input
-								label="E-mail"
-								type="text"
-								id="emailInput"
-								onKeyPress={nyFunktion}
-							/>
-							<Input
-								label="Password"
-								type="password"
-								id="passwordInput"
-								onKeyPress={nyFunktion}
-							/>
-						</form>
+						<Input
+							label="E-mail"
+							type="text"
+							id="emailInput"
+							onKeyPress={nyFunktion}
+						/>
+						<Input
+							label="Password"
+							type="password"
+							id="passwordInput"
+							onKeyPress={nyFunktion}
+						/>
+
 						{/* Shows an error message if login gets set to false. */}
 					</LoginBox>
 					<LoginButton onClick={loginFunction}>Login</LoginButton>
