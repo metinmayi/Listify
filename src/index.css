@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto+Slab&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 body {
 	margin: 0;
@@ -31,7 +31,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: space-between;
 	margin-block-start: 0;
 	margin-block-end: 0;
 	width: 100%;
@@ -43,4 +43,9 @@ body {
 	.App {
 		width: 50%;
 	}
+}
+.Link {
+	font-family: "Roboto slab";
+	text-decoration: none;
+	color: black;
 }

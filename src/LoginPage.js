@@ -1,20 +1,19 @@
 import Footer from "./Footer";
-import DefaultButton from "./DefaultButton";
 import Input from "./Input";
 import styled from "styled-components";
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import MainPage from "./MainPage";
 
-// import { Link } from "react-router-dom";
-
-const LoginPage = () => {
+const LoginPage = (e) => {
 	//#region Functions & States
-	// const navigate = useNavigate();
 	const [loggedIn, setLoggedIn] = useState();
 	const [errorMessage, setErrorMessage] = useState("");
 
-	const login = async () => {
+	const logoutFunction = () => {
+		setLoggedIn(false);
+		console.log("False;");
+	};
+	const loginFunction = async () => {
 		const userName = document.getElementById("emailInput").value;
 		const password = document.getElementById("passwordInput").value;
 		try {
@@ -36,14 +35,14 @@ const LoginPage = () => {
 	};
 	const nyFunktion = async (e) => {
 		if (e.key === "Enter") {
-			await login();
+			loginFunction();
 		}
 	};
 	//#endregion
 	return (
 		<div className="Page">
 			{loggedIn ? (
-				<MainPage />
+				<MainPage logoutFunction={logoutFunction} />
 			) : (
 				<>
 					<div className="LoginPageHeader">
@@ -63,9 +62,10 @@ const LoginPage = () => {
 							id="passwordInput"
 							onKeyPress={nyFunktion}
 						/>
+
 						{/* Shows an error message if login gets set to false. */}
 					</LoginBox>
-					<DefaultButton onClick={login}>Login</DefaultButton>
+					<LoginButton onClick={loginFunction}>Login</LoginButton>
 					<WrongPasswordMessage>{errorMessage}</WrongPasswordMessage>
 				</>
 			)}
@@ -97,5 +97,14 @@ const WrongPasswordMessage = styled.p`
 	text-align: center;
 	color: red;
 	font-size: 1rem;
+`;
+const LoginButton = styled.button`
+	background-color: #64b9ee;
+	border-radius: 50px;
+	margin-top: 5px;
+	border: none;
+	height: 5vh;
+	width: 50%;
+	font-size: 1.5rem;
 `;
 //#endregion

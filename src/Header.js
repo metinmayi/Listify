@@ -1,26 +1,48 @@
 import styled from "styled-components";
-const Header = () => {
+const Header = ({ logoutFunction }) => {
 	return (
 		<div style={{ width: "100%" }}>
-			<NameAndLogout>
-				<p>Name</p>
-				<p>Logout</p>
-			</NameAndLogout>
-			<HeaderText>Lisitfy</HeaderText>
+			<HeaderContainer>
+				<HeaderText>Lisitfy</HeaderText>
+				<NameAndLogout>
+					<NoMarginParagraph>admin</NoMarginParagraph>
+					<NoMarginParagraph onClick={logoutFunction}>Logout</NoMarginParagraph>
+				</NameAndLogout>
+			</HeaderContainer>
 		</div>
 	);
 };
 
 export default Header;
 
-const NameAndLogout = styled.div`
+const HeaderContainer = styled.div`
 	display: flex;
-	flex-direction: column;
+	justify-content: space-between;
+	// flex-direction: column;
 	align-items: flex-end;
 	width: 100%;
+	height: 10vh;
 `;
-const HeaderText = styled.h3`
-	color: yellow;
-	-webkit-text-stroke: 0.2px #64b9ee;
+const NameAndLogout = styled.div`
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	margin-right: 1rem;
+`;
+const HeaderText = styled.h1`
+	color: #edcf2e;
+	font-size: 2.5rem;
+	-webkit-text-stroke: 1px rgba(100, 185, 238, 0.5);
 	text-align: center;
+	margin-left: 1rem;
+`;
+
+const NoMarginParagraph = styled.a`
+	margin-block-start: 0em;
+	margin-block-end: 0em;
+	top: 0;
+	border: none;
+	cursor: pointer;
 `;
