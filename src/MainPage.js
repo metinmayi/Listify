@@ -1,7 +1,12 @@
 import Header from "./Header.js";
-
-const MainPage = () => {
-	return <Header />;
+import Main from "./Main.js";
+const MainPage = ({ logoutFunction }) => {
+	return (
+		<>
+			<Header logoutFunction={logoutFunction} />
+			<Main />
+		</>
+	);
 };
 
 export default MainPage;
