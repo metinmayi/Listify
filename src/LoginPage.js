@@ -79,6 +79,7 @@ const LoginButton = styled.button`
 	height: 5vh;
 	width: 100%;
 	font-size: 1.5rem;
+	font-family: "Roboto Slab";
 `;
 
 export const Form = styled.form`
