@@ -3,7 +3,7 @@ import Input from "./Input";
 import styled from "styled-components";
 import { useContext } from "react";
 import LoginContext from "./context/LoginContext";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 const LoginPage = (e) => {
 	//#region Functions & States
@@ -31,6 +31,9 @@ const LoginPage = (e) => {
 							<Input label="E-mail" type="text" id="emailInput" />
 							<Input label="Password" type="password" id="passwordInput" />
 							<LoginButton>Login</LoginButton>
+							<RegisterLink to="/registerpage">
+								Not a user? Register here!
+							</RegisterLink>
 						</Form>
 
 						{/* Shows an error message if login gets set to false. */}
@@ -46,12 +49,13 @@ const LoginPage = (e) => {
 export default LoginPage;
 
 //#region Declarations
-const LogoContainer = styled.div`
+export const LogoContainer = styled.div`
 	background-image: url("https://i.ibb.co/0yPv7mr/logo.png");
 	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;
 	height: 30vh;
+	width: 100%;
 `;
 
 const LoginBox = styled.div`
@@ -77,8 +81,18 @@ const LoginButton = styled.button`
 	font-size: 1.5rem;
 `;
 
-const Form = styled.form`
+export const Form = styled.form`
 	display: flex;
 	flex-direction: column;
+	gap: 0.5rem;
+`;
+
+const RegisterLink = styled(Link)`
+	color: black;
+	font-size: 1rem;
+	text-decoration: none;
+	cursor: pointer;
+	text-align: center;
+	margin-top: 20px;
 `;
 //#endregion
