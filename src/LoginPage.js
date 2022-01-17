@@ -1,48 +1,21 @@
 import Footer from "./Footer";
 import Input from "./Input";
 import styled from "styled-components";
-import { useState } from "react";
-import MainPage from "./MainPage";
+import { useContext } from "react";
+import LoginContext from "./context/LoginContext";
+import { Navigate } from "react-router-dom";
 
 const LoginPage = (e) => {
 	//#region Functions & States
-	const [loggedIn, setLoggedIn] = useState();
-	const [errorMessage, setErrorMessage] = useState("");
 
-	const logoutFunction = () => {
-		setLoggedIn(false);
-		console.log("False;");
-	};
-	const loginFunction = async () => {
-		const userName = document.getElementById("emailInput").value;
-		const password = document.getElementById("passwordInput").value;
-		try {
-			const result = await fetch(
-				"https://listify-api-project.herokuapp.com/users"
-			);
-			const users = await result.json();
-			const user = users.find((element) => element.username === userName);
-			if (user && password === user.password) {
-				setLoggedIn(true);
-			} else {
-				setLoggedIn(false);
-				setErrorMessage("Wrong username and/or password");
-				setTimeout(() => setErrorMessage(""), 2500);
-			}
-		} catch (error) {
-			console.log(error);
-		}
-	};
-	const nyFunktion = async (e) => {
-		if (e.key === "Enter") {
-			loginFunction();
-		}
-	};
 	//#endregion
+	const { loggedIn } = useContext(LoginContext);
+	const { loginFunction } = useContext(LoginContext);
+	const { errorMessage } = useContext(LoginContext);
 	return (
 		<div className="Page">
 			{loggedIn ? (
-				<MainPage logoutFunction={logoutFunction} />
+				<Navigate to="/mainPage" />
 			) : (
 				<>
 					<div className="LoginPageHeader">
@@ -54,13 +27,13 @@ const LoginPage = (e) => {
 							label="E-mail"
 							type="text"
 							id="emailInput"
-							onKeyPress={nyFunktion}
+							onKeyPress={(e) => (e.key === "Enter" ? loginFunction() : null)}
 						/>
 						<Input
 							label="Password"
 							type="password"
 							id="passwordInput"
-							onKeyPress={nyFunktion}
+							onKeyPress={(e) => (e.key === "Enter" ? loginFunction() : null)}
 						/>
 
 						{/* Shows an error message if login gets set to false. */}
