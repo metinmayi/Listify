@@ -6,21 +6,22 @@ import LoginContext from "./context/LoginContext";
 import { Link, Navigate } from "react-router-dom";
 
 const LoginPage = (e) => {
-	//#region Functions & States
-
-	//#endregion
+	//Import the loggedIn state
 	const { loggedIn } = useContext(LoginContext);
+	//Import the login Function
 	const { loginFunction } = useContext(LoginContext);
+	//import the error message when the login information is wrong.
 	const { errorMessage } = useContext(LoginContext);
 	return (
 		<div className="Page">
+			{/* If you're logged in, navigates you to the main page. Otherwise it displays the input fields for logging in and the registration options. */}
 			{loggedIn ? (
 				<Navigate to="/mainPage" />
 			) : (
 				<>
-					<div className="LoginPageHeader">
+					<div className="LoginPageHeader" style={{ width: "50%" }}>
 						<LogoContainer></LogoContainer>
-						<h2>Sign in to Listify</h2>
+						<LoginTitle>Sign in to Listify</LoginTitle>
 					</div>
 					<LoginBox>
 						<Form
@@ -28,7 +29,7 @@ const LoginPage = (e) => {
 								e.preventDefault();
 								loginFunction();
 							}}>
-							<Input label="E-mail" type="text" id="emailInput" />
+							<Input label="Username" type="text" id="emailInput" />
 							<Input label="Password" type="password" id="passwordInput" />
 							<LoginButton>Login</LoginButton>
 							<RegisterLink to="/registerpage">
@@ -95,5 +96,11 @@ const RegisterLink = styled(Link)`
 	cursor: pointer;
 	text-align: center;
 	margin-top: 20px;
+`;
+const LoginTitle = styled.div`
+	text-align: center;
+	font-weight: 500;
+	color: #002456;
+	font-size: 1.25rem;
 `;
 //#endregion

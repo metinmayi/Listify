@@ -12,6 +12,10 @@ const ListOfLists = ({ page }) => {
 			<ShoppingList></ShoppingList>
 			<ShoppingList></ShoppingList>
 			<ShoppingList></ShoppingList>
+			<ShoppingList></ShoppingList>
+			<ShoppingList></ShoppingList>
+			<ShoppingList></ShoppingList>
+			<ShoppingList></ShoppingList>
 		</ListOfListsContainer>
 	);
 };
