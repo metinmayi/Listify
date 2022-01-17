@@ -4,11 +4,18 @@ import { LogoContainer } from "./LoginPage";
 import Input from "./Input";
 import PrimaryButton from "./PrimaryButton";
 import Footer from "./Footer";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { useContext } from "react";
+import LoginContext from "./context/LoginContext";
 
 const RegisterPage = () => {
+	const { registrationError } = useContext(LoginContext);
+	const { register } = useContext(LoginContext);
+	const { registered } = useContext(LoginContext);
+
 	return (
 		<div className="Page">
+			{registered && <Navigate to="/" />}
 			<LogoContainer></LogoContainer>
 			<NoticeText>
 				Since this project is just for educational purposes, you can simply
@@ -16,20 +23,23 @@ const RegisterPage = () => {
 				functionality of the authentication system
 			</NoticeText>
 			<RegistrationForm
-				onSubmit={(e) =>
-					alert(
-						"Registration is not yet available. Use these details if you want to login: \n username:admin \n password: HireMe"
-					)
-				}>
+				onSubmit={(e) => {
+					e.preventDefault();
+					register();
+				}}>
 				<label htmlFor="registerUsername">Username:</label>
-				<Input type="text" />
+				<Input type="text" id="registerUsername" />
 				<label htmlFor="registerPassword">Password:</label>
-				<Input type="text" />
+				<Input type="password" id="registerPassword" />
 				<label htmlFor="registerRepeatPassword">Repeat your password:</label>
-				<Input type="text" />
+				<Input type="password" id="registerRepeatPassword" />
 				<PrimaryButton text={"Register"}></PrimaryButton>
 			</RegistrationForm>
-			<Link to="/">Back to mainpage</Link>
+			<StyledLink to="/">Back to mainpage</StyledLink>
+			{registrationError.length > 0 && (
+				<p style={{ color: "red" }}>{registrationError}</p>
+			)}
+
 			<Footer></Footer>
 		</div>
 	);
@@ -44,4 +54,8 @@ const RegistrationForm = styled.form`
 const NoticeText = styled.p`
 	font-size: 0.75rem;
 	text-align: center;
+`;
+const StyledLink = styled(Link)`
+	color: black;
+	cursor: pointer;
 `;
