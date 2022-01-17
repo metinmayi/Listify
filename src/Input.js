@@ -3,7 +3,12 @@ const Input = ({ label, type, id, onKeyPress }) => {
 	return (
 		<>
 			<label htmlFor="input">{label}</label>
-			<InputStyle type={type} id={id} onKeyPress={onKeyPress} />
+			<InputStyle
+				type={type}
+				id={id}
+				onKeyPress={onKeyPress}
+				autoComplete="off"
+			/>
 		</>
 	);
 };
