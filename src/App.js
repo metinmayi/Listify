@@ -3,6 +3,7 @@ import LoginPage from "./LoginPage";
 import MainPage from "./MainPage";
 import Missing from "./Missing";
 import { LoginProvider } from "./context/LoginContext";
+import RegisterPage from "./RegisterPage";
 
 function App() {
 	return (
@@ -12,6 +13,7 @@ function App() {
 					<Routes>
 						<Route path="/" element={<LoginPage />} />
 						<Route path="/mainPage" element={<MainPage />} />
+						<Route path="/registerPage" element={<RegisterPage />} />
 						<Route path="*" element={<Missing />} />
 					</Routes>
 				</BrowserRouter>
