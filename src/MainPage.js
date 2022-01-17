@@ -8,12 +8,12 @@ const MainPage = () => {
 	const { logoutFunction } = useContext(LoginContext);
 	const { loggedIn } = useContext(LoginContext);
 	return (
-		<>
+		<div className="Page">
 			{!loggedIn && <Navigate to="/" />}
 			<Header logoutFunction={logoutFunction} />
 			<Main />
 			<Footer></Footer>
-		</>
+		</div>
 	);
 };
 
