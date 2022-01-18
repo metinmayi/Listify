@@ -10,7 +10,7 @@ const PrimaryButton = ({ children, onClick }) => {
 export default PrimaryButton;
 const PrimaryButtonWrapper = styled.button`
 	background-color: #64b9ee;
-	border-radius: 50px;
+	border-radius: 10px;
 	margin-top: 5px;
 	border: none;
 	height: 5vh;

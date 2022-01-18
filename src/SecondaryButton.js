@@ -8,7 +8,7 @@ const SecondaryButton = () => {
 export default SecondaryButton;
 const Secondary = styled.button`
 	background-color: #e2e54f;
-	border-radius: 50px;
+	border-radius: 10px;
 	margin-top: 5px;
 	border: none;
 	height: 5vh;

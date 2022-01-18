@@ -40,13 +40,14 @@ body {
 }
 /* Media Query > mobile */
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 768px) {
 	.App {
-		width: 50%;
+		width: 75%;
 	}
 }
-.Link {
-	font-family: "Roboto slab";
-	text-decoration: none;
-	color: black;
+
+@media screen and (min-width: 1024px) {
+	.App {
+		width: 40%;
+	}
 }

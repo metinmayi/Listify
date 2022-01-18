@@ -17,7 +17,7 @@ export default Input;
 
 const InputStyle = styled.input`
 	background-color: rgba(183, 181, 181, 0.5);
-	border-radius: 50px;
+	border-radius: 10px;
 	height: 5vh;
 	border: none;
 	padding: 0 3%;

@@ -16,7 +16,9 @@ const RegisterPage = () => {
 	return (
 		<div className="Page">
 			{registered && <Navigate to="/" />}
-			<LogoContainer></LogoContainer>
+			<div className="LoginPageHeader" style={{ width: "50%" }}>
+				<LogoContainer></LogoContainer>
+			</div>
 			<NoticeText>
 				Since this project is just for educational purposes, you can simply
 				register with only a username and email. <br /> This is to showcase the

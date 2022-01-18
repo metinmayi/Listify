@@ -21,7 +21,6 @@ const LoginPage = (e) => {
 				<>
 					<div className="LoginPageHeader" style={{ width: "50%" }}>
 						<LogoContainer></LogoContainer>
-						<LoginTitle>Sign in to Listify</LoginTitle>
 					</div>
 					<LoginBox>
 						<Form
@@ -55,8 +54,8 @@ export const LogoContainer = styled.div`
 	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;
-	height: 30vh;
-	width: 100%;
+	height: 25vh;
+	margin-top: 2rem;
 `;
 
 const LoginBox = styled.div`
@@ -71,6 +70,8 @@ const WrongPasswordMessage = styled.p`
 	text-align: center;
 	color: red;
 	font-size: 1rem;
+	margin-block-start: 0;
+	margin-block-end: 0;
 `;
 const LoginButton = styled.button`
 	background-color: #64b9ee;
@@ -96,11 +97,5 @@ const RegisterLink = styled(Link)`
 	cursor: pointer;
 	text-align: center;
 	margin-top: 20px;
-`;
-const LoginTitle = styled.div`
-	text-align: center;
-	font-weight: 500;
-	color: #002456;
-	font-size: 1.25rem;
 `;
 //#endregion
