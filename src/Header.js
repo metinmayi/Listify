@@ -1,11 +1,19 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import LoginContext from "./context/LoginContext";
 const Header = ({ logoutFunction }) => {
+	const { loggedinUser } = useContext(LoginContext);
 	return (
 		<div style={{ width: "100%" }}>
 			<HeaderContainer>
 				<HeaderText>Lisitfy</HeaderText>
 				<NameAndLogout>
-					<NoMarginParagraph>admin</NoMarginParagraph>
+					<NoMarginParagraph>
+						{
+							// Makes the usernames first letter to an uppercase letter
+							loggedinUser.charAt(0).toUpperCase() + loggedinUser.slice(1)
+						}
+					</NoMarginParagraph>
 					<NoMarginParagraph onClick={logoutFunction}>Logout</NoMarginParagraph>
 				</NameAndLogout>
 			</HeaderContainer>

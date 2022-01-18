@@ -3,6 +3,7 @@ import LoginPage from "./LoginPage";
 import MainPage from "./MainPage";
 import Missing from "./Missing";
 import { LoginProvider } from "./context/LoginContext";
+
 import RegisterPage from "./RegisterPage";
 
 function App() {

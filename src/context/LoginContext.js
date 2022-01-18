@@ -11,18 +11,21 @@ export const LoginProvider = ({ children }) => {
 	const [loggedIn, setLoggedIn] = useState();
 	//ErrorMessage if login fails
 	const [errorMessage, setErrorMessage] = useState("");
+	//Stores the name of the logged in user
+	const [loggedinUser, setLoggedinuser] = useState("");
 	//Login Function
 	const loginFunction = async () => {
-		const userName = document.getElementById("emailInput").value.toLowerCase();
+		const username = document.getElementById("emailInput").value.toLowerCase();
 		const password = document.getElementById("passwordInput").value;
 		try {
 			const result = await axios(
 				"https://listify-api-project.herokuapp.com/users"
 			);
 			const users = await result.data;
-			const user = users.find((element) => element.username === userName);
+			const user = users.find((element) => element.username === username);
 			if (user && password === user.password) {
 				setLoggedIn(true);
+				setLoggedinuser(username);
 			} else {
 				setLoggedIn(false);
 				setErrorMessage("Wrong username and/or password");
@@ -98,6 +101,7 @@ export const LoginProvider = ({ children }) => {
 				register,
 				registered,
 				setRegistered,
+				loggedinUser,
 			}}>
 			{children}
 		</LoginContext.Provider>
