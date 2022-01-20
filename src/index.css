@@ -40,13 +40,13 @@ body {
 }
 /* Media Query > mobile */
 
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
 	.App {
 		width: 75%;
 	}
 }
 
-@media screen and (min-width: 1024px) {
+@media (min-width: 1024px) {
 	.App {
 		width: 40%;
 	}
