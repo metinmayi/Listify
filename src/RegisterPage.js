@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { LogoContainer } from "./LoginPage";
 import Input from "./Input";
-import PrimaryButton from "./PrimaryButton";
+import Button from "./Button";
 import Footer from "./Footer";
 import { Link, Navigate } from "react-router-dom";
 import { useContext } from "react";
@@ -35,7 +35,7 @@ const RegisterPage = () => {
 				<Input type="password" id="registerPassword" />
 				<label htmlFor="registerRepeatPassword">Repeat your password:</label>
 				<Input type="password" id="registerRepeatPassword" />
-				<PrimaryButton text={"Register"}></PrimaryButton>
+				<Button>Register</Button>
 			</RegistrationForm>
 			<StyledLink to="/">Back to mainpage</StyledLink>
 			{registrationError.length > 0 && (

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useContext } from "react";
 import LoginContext from "./context/LoginContext";
 import { Link, Navigate } from "react-router-dom";
+import Button from "./Button";
 
 const LoginPage = (e) => {
 	//Import the loggedIn state
@@ -30,7 +31,7 @@ const LoginPage = (e) => {
 							}}>
 							<Input label="Username" type="text" id="emailInput" />
 							<Input label="Password" type="password" id="passwordInput" />
-							<LoginButton>Login</LoginButton>
+							<Button variant="true">Login</Button>
 							<RegisterLink to="/registerpage">
 								Not a user? Register here!
 							</RegisterLink>
@@ -72,16 +73,6 @@ const WrongPasswordMessage = styled.p`
 	font-size: 1rem;
 	margin-block-start: 0;
 	margin-block-end: 0;
-`;
-const LoginButton = styled.button`
-	background-color: #64b9ee;
-	border-radius: 50px;
-	margin-top: 10px;
-	border: none;
-	height: 5vh;
-	width: 100%;
-	font-size: 1.5rem;
-	font-family: "Roboto Slab";
 `;
 
 export const Form = styled.form`
