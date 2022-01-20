@@ -2,7 +2,16 @@ import React from "react";
 import styled from "styled-components";
 
 const PrimaryButton = ({ text }) => {
-	return <Primary>{text}</Primary>;
+	return (
+		<Primary
+			onClick={() =>
+				alert(
+					"This function is not ready yet. It should be within a few days as of today, 2022-01-20"
+				)
+			}>
+			{text}
+		</Primary>
+	);
 };
 
 export default PrimaryButton;

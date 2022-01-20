@@ -1,21 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import ShoppingList from "./ShoppingList";
 
-const ListOfLists = ({ page }) => {
+const ListOfLists = ({ page, children }) => {
 	return (
 		<ListOfListsContainer>
 			<ListOfListsTitle>{page}</ListOfListsTitle>
-			<ShoppingList></ShoppingList>
-			<ShoppingList></ShoppingList>
-			<ShoppingList></ShoppingList>
-			<ShoppingList></ShoppingList>
-			<ShoppingList></ShoppingList>
-			<ShoppingList></ShoppingList>
-			<ShoppingList></ShoppingList>
-			<ShoppingList></ShoppingList>
-			<ShoppingList></ShoppingList>
-			<ShoppingList></ShoppingList>
+			{children}
 		</ListOfListsContainer>
 	);
 };
@@ -28,6 +18,7 @@ const ListOfListsContainer = styled.div`
 	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 	padding: 2%;
 	overflow: scroll;
+	padding: 20px;
 `;
 const ListOfListsTitle = styled.h2`
 	text-align: center;
