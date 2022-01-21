@@ -1,5 +1,4 @@
 import axios from "axios";
-import e from "cors";
 import React, { useContext } from "react";
 import styled from "styled-components";
 import Button from "./Button";
@@ -13,7 +12,7 @@ const Modal = ({ showmodal, setShowmodal, setLists }) => {
 	};
 	const fetchLists = async () => {
 		const result = await axios(
-			`https://listify-api-project.herokuapp.com/lists/${loggedinUser}`
+			`https://listify-api-project.herokuapp.com/lists/user/${loggedinUser}`
 		);
 		setLists(result.data);
 	};
@@ -25,7 +24,7 @@ const Modal = ({ showmodal, setShowmodal, setLists }) => {
 		//Fetch the current lists
 		try {
 			const result = await axios(
-				`https://listify-api-project.herokuapp.com/lists/${loggedinUser}`
+				`https://listify-api-project.herokuapp.com/lists/user/${loggedinUser}`
 			);
 			const existingList = result.data;
 			//Loop through the existing lists and check if anyone of them has the same title as the listTitle.
@@ -43,7 +42,7 @@ const Modal = ({ showmodal, setShowmodal, setLists }) => {
 			}
 			//If there was no match, add this list to the database.
 			await axios.post(
-				`https://listify-api-project.herokuapp.com/lists/${loggedinUser}`,
+				`https://listify-api-project.herokuapp.com/lists/user/${loggedinUser}`,
 				{
 					username: loggedinUser,
 					title: listTitle,

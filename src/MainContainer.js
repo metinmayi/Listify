@@ -19,6 +19,9 @@ const ListOfListsContainer = styled.div`
 	padding: 2%;
 	overflow: scroll;
 	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 `;
 const ListOfListsTitle = styled.h2`
 	text-align: center;
