@@ -48,15 +48,28 @@ const Main = () => {
 				<Button variant="secondary">Old Lists</Button>
 			</DoubleButtonsContainer>
 			<MainContainer page="Shopping Lists">
+				{/* If your lists are empty, displays "No lists found", otherwise, it displays your lists.*/}
+
 				{lists.length < 1 ? (
 					<p style={{ textAlign: "center" }}>No lists found</p>
 				) : (
+					//Maps through your array of lists and prints them out.
 					lists.map((list) => (
 						<ListContainer key={list._id} id={list._id}>
+							{/* Each list gets an OnClick so you can navigate to it later.*/}
 							<div onClick={(e) => console.log(e.target.parentNode)}>
 								<ListHeader>{list.title}</ListHeader>
-								<ListItems>Ett,två,tre....</ListItems>
+								{list.items.length < 1 ? (
+									<ListItems>Empty list</ListItems>
+								) : list.items.length < 2 ? (
+									<ListItems>{`${list.items[0]}`}</ListItems>
+								) : list.items.length < 3 ? (
+									<ListItems>{`${list.items[0]}, ${list.items[1]}`}</ListItems>
+								) : (
+									<ListItems>{`${list.items[0]}, ${list.items[1]}, ${list.items[2]}...`}</ListItems>
+								)}
 							</div>
+							{/* Each list gets an OnClick so you can delete it*/}
 							<div onClick={(e) => deleteList(e.target.parentNode.id)}>
 								<FaTrashAlt style={{ color: "red" }} pointerEvents="none" />
 							</div>
