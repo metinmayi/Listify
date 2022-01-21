@@ -59,6 +59,7 @@ const Main = () => {
 							{/* Each list gets an OnClick so you can navigate to it later.*/}
 							<div onClick={(e) => console.log(e.target.parentNode)}>
 								<ListHeader>{list.title}</ListHeader>
+								{/*Depending on how many items are in your list, it will display it differently */}
 								{list.items.length < 1 ? (
 									<ListItems>Empty list</ListItems>
 								) : list.items.length < 2 ? (
