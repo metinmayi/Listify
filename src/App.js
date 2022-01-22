@@ -5,6 +5,7 @@ import Missing from "./Missing";
 import { LoginProvider } from "./context/LoginContext";
 
 import RegisterPage from "./RegisterPage";
+import ListPage from "./ListPage";
 
 function App() {
 	return (
@@ -15,6 +16,7 @@ function App() {
 						<Route path="/" element={<LoginPage />} />
 						<Route path="/mainPage" element={<MainPage />} />
 						<Route path="/registerPage" element={<RegisterPage />} />
+						<Route path="/listPage" element={<ListPage />} />
 						<Route path="*" element={<Missing />} />
 					</Routes>
 				</BrowserRouter>

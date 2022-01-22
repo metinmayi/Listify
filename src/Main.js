@@ -6,7 +6,7 @@ import LoginContext from "./context/LoginContext.js";
 import MainContainer from "./MainContainer";
 import Modal from "./Modal.js";
 import Button from "./Button.js";
-const Main = () => {
+const Main = ({ page }) => {
 	const [lists, setLists] = useState([]);
 	const [showmodal, setShowmodal] = useState(false);
 	const { loggedinUser } = useContext(LoginContext);
@@ -16,15 +16,19 @@ const Main = () => {
 		setShowmodal(!showmodal);
 	};
 	const fetchLists = async () => {
-		const result = await axios(
-			`https://listify-api-project.herokuapp.com/lists/user/${loggedinUser}`
-		);
-		setLists(result.data);
+		try {
+			const result = await axios(
+				`https://listify-api-project.herokuapp.com/lists/getlists/${loggedinUser}`
+			);
+			setLists(result.data);
+		} catch (error) {
+			console.log(error);
+		}
 	};
 	const deleteList = async (id) => {
 		try {
 			await axios.delete(
-				`https://listify-api-project.herokuapp.com/lists/id/${id}`
+				`https://listify-api-project.herokuapp.com/lists/delete/${id}`
 			);
 			fetchLists();
 		} catch (error) {
@@ -47,7 +51,7 @@ const Main = () => {
 				<Button onClick={toggleModal}>Create New List</Button>
 				<Button variant="secondary">Old Lists</Button>
 			</DoubleButtonsContainer>
-			<MainContainer page="Shopping Lists">
+			<MainContainer page={page}>
 				{lists.length < 1 ? (
 					<p style={{ textAlign: "center" }}>No lists found</p>
 				) : (
@@ -55,7 +59,15 @@ const Main = () => {
 						<ListContainer key={list._id} id={list._id}>
 							<div onClick={(e) => console.log(e.target.parentNode)}>
 								<ListHeader>{list.title}</ListHeader>
-								<ListItems>Ett,två,tre....</ListItems>
+								{list.items.length < 1 ? (
+									<ListItems>Empty list</ListItems>
+								) : list.items.length < 2 ? (
+									<ListItems>{`${list.items[0]}`}</ListItems>
+								) : list.items.length < 3 ? (
+									<ListItems>{`${list.items[0]}, ${list.items[1]}`}</ListItems>
+								) : (
+									<ListItems>{`${list.items[0]}, ${list.items[1]}, ${list.items[2]}...`}</ListItems>
+								)}
 							</div>
 							<div onClick={(e) => deleteList(e.target.parentNode.id)}>
 								<FaTrashAlt style={{ color: "red" }} pointerEvents="none" />
