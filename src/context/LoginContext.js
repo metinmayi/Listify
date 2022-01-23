@@ -36,8 +36,8 @@ export const LoginProvider = ({ children }) => {
 	//Logout Function
 	const logoutFunction = async () => {
 		try {
-			setLoggedIn(false);
 			await axios("https://listify-api-project.herokuapp.com/logout");
+			setLoggedIn(false);
 			console.log("Logout was ran");
 		} catch (error) {
 			console.log(error);
