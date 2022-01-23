@@ -20,10 +20,10 @@ https://github.com/metinmayi/Node-API
 
 
 ## Features:
-* Create multiple shoppinglists that are accessible with your username and password.
-* You can add/remove items to your shoppinglist whenever you want.
-* Mark/unmark items as purchased.
-* Create/share shoppinglists with friends/family. If they have an account, you can grant them access to edit and read your lists.
+* Create/delete shoppinglists that are bound to your account.
+* Ability to share shoppinglists to friends/family, opening the lists up to their accounts aswell.
+* Add/remove items from your shoppinglist.
+* Check/Uncheck items to show that you've bought or haven't bought them yet.
 * If you accidentally remove a list, don't worry, they're available and able to be restored through the "Old Lists" section.
 
 
