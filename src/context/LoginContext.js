@@ -30,8 +30,9 @@ export const LoginProvider = ({ children }) => {
 			setLoggedinUser(username);
 		} catch (error) {
 			console.log(error);
-			setLoggedIn(false);
-			if (error) setErrorMessage(error);
+			if (error) {
+				setErrorMessage(error.response.data);
+			}
 		}
 	};
 	//Logout Function
