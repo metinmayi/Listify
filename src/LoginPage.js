@@ -1,18 +1,36 @@
 import Footer from "./Footer";
 import Input from "./Input";
 import styled from "styled-components";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import LoginContext from "./context/LoginContext";
 import { Link, Navigate } from "react-router-dom";
 import Button from "./Button";
+import axios from "axios";
 
 const LoginPage = (e) => {
 	//Import the loggedIn state
-	const { loggedIn } = useContext(LoginContext);
+	const { loggedIn, setLoggedIn } = useContext(LoginContext);
+	//Import the loggedInUser
+	const { setLoggedinUser } = useContext(LoginContext);
 	//Import the login Function
 	const { loginFunction } = useContext(LoginContext);
 	//import the error message when the login information is wrong.
 	const { errorMessage } = useContext(LoginContext);
+
+	//Automatically logs you in, if you have an active JWT
+	useEffect(() => {
+		(async () => {
+			try {
+				const response = await axios(
+					"https://listify-api-project.herokuapp.com/loginStatus"
+				);
+				setLoggedIn(true);
+				setLoggedinUser(response.data);
+			} catch (error) {
+				console.log(error);
+			}
+		})();
+	}, []);
 	return (
 		<div className="Page">
 			{/* If you're logged in, navigates you to the main page. Otherwise it displays the input fields for logging in and the registration options. */}

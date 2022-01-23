@@ -11,7 +11,7 @@ const MainPage = () => {
 		<div className="Page">
 			{!loggedIn && <Navigate to="/" />}
 			<Header logoutFunction={logoutFunction} />
-			<Main />
+			<Main page="Shopping List" />
 			<Footer></Footer>
 		</div>
 	);

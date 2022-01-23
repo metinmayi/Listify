@@ -11,46 +11,29 @@ const Modal = ({ showmodal, setShowmodal, setLists }) => {
 		setShowmodal(!showmodal);
 	};
 	const fetchLists = async () => {
-		const result = await axios(
-			`https://listify-api-project.herokuapp.com/lists/user/${loggedinUser}`
-		);
-		setLists(result.data);
-	};
-	const newList = async (e) => {
-		e.preventDefault();
-
-		const listTitle = document.getElementById("newListInput").value;
-		//Check if a list with that name already exists registered to the current user.
-		//Fetch the current lists
 		try {
 			const result = await axios(
-				`https://listify-api-project.herokuapp.com/lists/user/${loggedinUser}`
+				`https://listify-api-project.herokuapp.com/lists/getlists/${loggedinUser}`
 			);
-			const existingList = result.data;
-			//Loop through the existing lists and check if anyone of them has the same title as the listTitle.
-			let matches = false;
-			//If you find any match, set matches to true
-			existingList.forEach((list) => {
-				listTitle.toLowerCase() === list.title.toLowerCase()
-					? (matches = true)
-					: console.log("No match");
-			});
-			//If there was a match, throw alert and exit function
-			if (matches) {
-				alert("You already have a list with that name");
-				return;
-			}
-			//If there was no match, add this list to the database.
+			setLists(result.data);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	const newList = async (e) => {
+		e.preventDefault();
+		const listName = document.getElementById("newListInput").value;
+		try {
 			await axios.post(
-				`https://listify-api-project.herokuapp.com/lists/user/${loggedinUser}`,
+				`https://listify-api-project.herokuapp.com/lists/createlist/${loggedinUser}`,
 				{
 					username: loggedinUser,
-					title: listTitle,
+					title: listName,
 				}
 			);
 			//Close the modal
 			setShowmodal(!showmodal);
-
 			fetchLists();
 		} catch (error) {
 			console.log(error);
