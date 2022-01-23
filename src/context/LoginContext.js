@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 axios.defaults.withCredentials = true;
 const LoginContext = createContext({});
 
@@ -35,12 +36,13 @@ export const LoginProvider = ({ children }) => {
 	};
 	//Logout Function
 	const logoutFunction = async () => {
-		setLoggedIn(false);
-		console.log("Logout was ran");
 		try {
 			await axios("https://listify-api-project.herokuapp.com/logout");
+			console.log("Logout was ran");
 		} catch (error) {
 			console.log(error);
+		} finally {
+			setLoggedIn(false);
 		}
 	};
 	//Register Function

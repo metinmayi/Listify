@@ -35,9 +35,7 @@ const LoginPage = (e) => {
 		<div className="Page">
 			{/* If you're logged in, navigates you to the main page. Otherwise it displays the input fields for logging in and the registration options. */}
 			{loggedIn ? (
-				setTimeout(() => {
-					<Navigate to="/mainPage" />;
-				}, 2000)
+				<Navigate to="/mainPage" />
 			) : (
 				<>
 					<div className="LoginPageHeader" style={{ width: "50%" }}>
