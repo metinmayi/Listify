@@ -11,13 +11,13 @@ Technologies used in this project:
 * Express
 
 ## Authentication
-I've chosen to authenticate users through my API. This is to demonstrate my knowledge of managing a database and fetching data.
+Authentication is being handled throught my selfmade API, with JWT tokens stored in HTTP-only cookies.
+Passwords are encrypted using the bcryptjs library.
 
 ## API
 I created my own API that I've hosted through Heroku. It can be found here:
 https://github.com/metinmayi/Node-API
 
-This project is being created for my own educational purposes.
 
 ## Features:
 * Create multiple shoppinglists that are accessible with your username and password.
