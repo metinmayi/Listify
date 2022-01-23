@@ -21,8 +21,8 @@ const RegisterPage = () => {
 			</div>
 			<NoticeText>
 				Since this project is just for educational purposes, you can simply
-				register with only a username and email. <br /> This is to showcase the
-				functionality of the authentication system
+				register with only a username and password. <br /> This is to showcase
+				the functionality of the authentication system
 			</NoticeText>
 			<RegistrationForm
 				onSubmit={(e) => {

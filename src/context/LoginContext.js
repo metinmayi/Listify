@@ -35,6 +35,7 @@ export const LoginProvider = ({ children }) => {
 			}
 		}
 	};
+
 	//Logout Function
 	const logoutFunction = async () => {
 		try {
@@ -46,6 +47,7 @@ export const LoginProvider = ({ children }) => {
 			setLoggedIn(false);
 		}
 	};
+
 	//Register Function
 	const register = async () => {
 		//Lowercases the input username.
@@ -66,10 +68,7 @@ export const LoginProvider = ({ children }) => {
 		};
 		try {
 			//Send a request to create a new user.
-			await axios.post(
-				"https://listify-api-project.herokuapp.com/users/register",
-				newUser
-			);
+			await axios.post("http://localhost:5000/register", newUser);
 			//Marks you as registered to forward you to the front page.
 			setRegistered(true);
 			setRegistrationError("");
