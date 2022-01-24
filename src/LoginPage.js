@@ -31,6 +31,7 @@ const LoginPage = (e) => {
 			}
 		})();
 	});
+
 	return (
 		<div className="Page">
 			{/* If you're logged in, navigates you to the main page. Otherwise it displays the input fields for logging in and the registration options. */}

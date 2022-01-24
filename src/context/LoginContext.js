@@ -33,9 +33,6 @@ export const LoginProvider = ({ children }) => {
 			console.log(error);
 			if (error) {
 				setErrorMessage(error.response.data);
-				setTimeout(() => {
-					setErrorMessage("");
-				}, 5000);
 			}
 		}
 	};
