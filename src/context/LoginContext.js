@@ -5,7 +5,9 @@ const LoginContext = createContext({});
 
 export const LoginProvider = ({ children }) => {
 	//Base URL
-	const BaseURL = "http://localhost:5000/";
+	const BaseURL = "https://listify-api-project.herokuapp.com/";
+	// const BaseURL = "http://localhost:5000/";
+
 	//State if your registration was successfull or not
 	const [registered, setRegistered] = useState();
 	//Errormessage if registration fails
