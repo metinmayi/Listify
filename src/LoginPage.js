@@ -8,6 +8,8 @@ import Button from "./Button";
 import axios from "axios";
 
 const LoginPage = (e) => {
+	//ULR import
+	const { BaseURL } = useContext(LoginContext);
 	//Import the loggedIn state
 	const { loggedIn, setLoggedIn } = useContext(LoginContext);
 	//Import the loggedInUser
@@ -21,16 +23,15 @@ const LoginPage = (e) => {
 	useEffect(() => {
 		(async () => {
 			try {
-				const response = await axios(
-					"https://listify-api-project.herokuapp.com/loginStatus"
-				);
+				const response = await axios(`${BaseURL}loginStatus`);
 				setLoggedIn(true);
 				setLoggedinUser(response.data);
 			} catch (error) {
 				console.log(error);
 			}
 		})();
-	}, []);
+	});
+
 	return (
 		<div className="Page">
 			{/* If you're logged in, navigates you to the main page. Otherwise it displays the input fields for logging in and the registration options. */}

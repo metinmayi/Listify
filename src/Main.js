@@ -7,6 +7,7 @@ import MainContainer from "./MainContainer";
 import Modal from "./Modal.js";
 import Button from "./Button.js";
 const Main = ({ page }) => {
+	const { BaseURL } = useContext(LoginContext);
 	const [lists, setLists] = useState([]);
 	const [showmodal, setShowmodal] = useState(false);
 	const { loggedinUser } = useContext(LoginContext);
@@ -17,9 +18,7 @@ const Main = ({ page }) => {
 	};
 	const fetchLists = async () => {
 		try {
-			const result = await axios(
-				`https://listify-api-project.herokuapp.com/lists/getlists/${loggedinUser}`
-			);
+			const result = await axios(`${BaseURL}lists/getlists/${loggedinUser}`);
 			setLists(result.data);
 		} catch (error) {
 			console.log(error);
@@ -27,9 +26,7 @@ const Main = ({ page }) => {
 	};
 	const deleteList = async (id) => {
 		try {
-			await axios.delete(
-				`https://listify-api-project.herokuapp.com/lists/delete/${id}`
-			);
+			await axios.delete(`${BaseURL}lists/delete/${id}`);
 			fetchLists();
 		} catch (error) {
 			console.log(error.message);

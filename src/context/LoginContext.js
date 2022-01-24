@@ -1,10 +1,13 @@
 import { createContext, useState } from "react";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
 axios.defaults.withCredentials = true;
 const LoginContext = createContext({});
 
 export const LoginProvider = ({ children }) => {
+	//Base URL
+	const BaseURL = "https://listify-api-project.herokuapp.com/";
+	// const BaseURL = "http://localhost:5000/";
+
 	//State if your registration was successfull or not
 	const [registered, setRegistered] = useState();
 	//Errormessage if registration fails
@@ -22,7 +25,7 @@ export const LoginProvider = ({ children }) => {
 		const password = document.getElementById("passwordInput").value;
 		//Requests a login
 		try {
-			await axios.post("https://listify-api-project.herokuapp.com/login", {
+			await axios.post(`${BaseURL}login`, {
 				username: username,
 				password: password,
 			});
@@ -39,7 +42,7 @@ export const LoginProvider = ({ children }) => {
 	//Logout Function
 	const logoutFunction = async () => {
 		try {
-			await axios("https://listify-api-project.herokuapp.com/logout");
+			await axios(`${BaseURL}logout`);
 			console.log("Logout was ran");
 		} catch (error) {
 			console.log(error);
@@ -68,10 +71,7 @@ export const LoginProvider = ({ children }) => {
 		};
 		try {
 			//Send a request to create a new user.
-			await axios.post(
-				"https://listify-api-project.herokuapp.com/register",
-				newUser
-			);
+			await axios.post(`${BaseURL}register`, newUser);
 			//Marks you as registered to forward you to the front page.
 			setRegistered(true);
 			setRegistrationError("");
@@ -102,6 +102,8 @@ export const LoginProvider = ({ children }) => {
 				setRegistered,
 				loggedinUser,
 				setLoggedinUser,
+				BaseURL,
+				setErrorMessage,
 			}}>
 			{children}
 		</LoginContext.Provider>

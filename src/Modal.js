@@ -5,6 +5,7 @@ import Button from "./Button";
 import LoginContext from "./context/LoginContext";
 
 const Modal = ({ showmodal, setShowmodal, setLists }) => {
+	const { BaseURL } = useContext(LoginContext);
 	const { loggedinUser } = useContext(LoginContext);
 	const toggleModal = (e) => {
 		e.preventDefault();
@@ -12,9 +13,7 @@ const Modal = ({ showmodal, setShowmodal, setLists }) => {
 	};
 	const fetchLists = async () => {
 		try {
-			const result = await axios(
-				`https://listify-api-project.herokuapp.com/lists/getlists/${loggedinUser}`
-			);
+			const result = await axios(`${BaseURL}lists/getlists/${loggedinUser}`);
 			setLists(result.data);
 		} catch (error) {
 			console.log(error);
@@ -25,13 +24,10 @@ const Modal = ({ showmodal, setShowmodal, setLists }) => {
 		e.preventDefault();
 		const listName = document.getElementById("newListInput").value;
 		try {
-			await axios.post(
-				`https://listify-api-project.herokuapp.com/lists/createlist/${loggedinUser}`,
-				{
-					username: loggedinUser,
-					title: listName,
-				}
-			);
+			await axios.post(`${BaseURL}lists/createlist/${loggedinUser}`, {
+				username: loggedinUser,
+				title: listName,
+			});
 			//Close the modal
 			setShowmodal(!showmodal);
 			fetchLists();
