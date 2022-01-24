@@ -17,8 +17,12 @@ const LoginPage = (e) => {
 	//Import the login Function
 	const { loginFunction } = useContext(LoginContext);
 	//import the error message when the login information is wrong.
-	const { errorMessage } = useContext(LoginContext);
-
+	const { errorMessage, setErrorMessage } = useContext(LoginContext);
+	// Username and Password input fields -- .value IS NOT WORKING
+	//ERR
+	//ERR
+	const usernameInput = document.getElementById("emailInput");
+	const passwordInput = document.getElementById("passwordInput");
 	//Automatically logs you in, if you have an active JWT
 	useEffect(() => {
 		(async () => {
@@ -31,6 +35,11 @@ const LoginPage = (e) => {
 			}
 		})();
 	});
+	//Clears the login error message when a user writes new info in the password or username Input fields.
+	//Belongs to the code on row 21 - ERR
+	// useEffect(() => {
+	// 	setErrorMessage("");
+	// }, [usernameInput, passwordInput]);
 	return (
 		<div className="Page">
 			{/* If you're logged in, navigates you to the main page. Otherwise it displays the input fields for logging in and the registration options. */}

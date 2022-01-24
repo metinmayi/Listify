@@ -101,6 +101,7 @@ export const LoginProvider = ({ children }) => {
 				loggedinUser,
 				setLoggedinUser,
 				BaseURL,
+				setErrorMessage,
 			}}>
 			{children}
 		</LoginContext.Provider>
