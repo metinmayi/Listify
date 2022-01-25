@@ -1,5 +1,5 @@
 # React project: Listify - Fullstack project from scratch
-The app is hosted via Netlify : https://listifyapp.netlify.app/mainPage
+The app is hosted via Netlify : https://listifyapp.netlify.app/
 
  Technologies used in this project:
 * React
