@@ -1,6 +1,6 @@
 import Footer from "./Footer";
 import Input from "./Input";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { useContext, useEffect } from "react";
 import LoginContext from "./context/LoginContext";
 import { Link, Navigate } from "react-router-dom";
@@ -18,6 +18,8 @@ const LoginPage = (e) => {
 	const { loginFunction } = useContext(LoginContext);
 	//import the error message when the login information is wrong.
 	const { errorMessage } = useContext(LoginContext);
+	//Checks if you've succesfully registered
+	const { registered } = useContext(LoginContext);
 
 	//Automatically logs you in, if you have an active JWT
 	useEffect(() => {
@@ -42,6 +44,13 @@ const LoginPage = (e) => {
 					<div className="LoginPageHeader" style={{ width: "50%" }}>
 						<LogoContainer></LogoContainer>
 					</div>
+					{registered && (
+						<WrongPasswordMessage variant="goodRegistration">
+							Your user was successfully created. You can now login with your
+							details.
+						</WrongPasswordMessage>
+					)}
+
 					<LoginBox>
 						<Form
 							onSubmit={(e) => {
@@ -92,6 +101,13 @@ const WrongPasswordMessage = styled.p`
 	font-size: 1rem;
 	margin-block-start: 0;
 	margin-block-end: 0;
+	${({ variant }) =>
+		variant === "goodRegistration"
+			? css`
+					color: green;
+					font-size: 1.5rem;
+			  `
+			: null}
 `;
 
 export const Form = styled.form`

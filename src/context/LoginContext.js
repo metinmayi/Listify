@@ -77,9 +77,11 @@ export const LoginProvider = ({ children }) => {
 			//Marks you as registered to forward you to the front page.
 			setRegistered(true);
 			setRegistrationError("");
-			alert("Your user has been created. Returning you to the frontpage");
+			setTimeout(() => {
+				setRegistered(false);
+			}, 10000);
 			//Resets your registered state so you can access the registration page again.
-			setRegistered(false);
+
 			//Clear out the input fields.
 			document.getElementById("registerUsername").value = "";
 			document.getElementById("registerPassword").value = "";
@@ -107,7 +109,7 @@ export const LoginProvider = ({ children }) => {
 				BaseURL,
 				setErrorMessage,
 				selectedList,
-				setSelectedList
+				setSelectedList,
 			}}>
 			{children}
 		</LoginContext.Provider>
