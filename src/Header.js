@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import LoginContext from "./context/LoginContext";
-const Header = ({ logoutFunction }) => {
+const Header = () => {
+	const { logoutFunction } = useContext(LoginContext);
 	const { loggedinUser } = useContext(LoginContext);
 	return (
 		<div style={{ width: "100%" }}>
