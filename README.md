@@ -1,4 +1,4 @@
-# React project: Listify (under development)
+# React project: Listify - Fullstack project from scratch
 https://listifyapp.netlify.app/
 
 A shoppinglist application where you can create and share shoppinglists with friends and family!
