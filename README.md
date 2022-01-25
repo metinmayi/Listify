@@ -12,7 +12,7 @@ The app is hosted via Netlify : https://listifyapp.netlify.app/
 
 <img src="https://cdn.discordapp.com/attachments/923936691906043965/935545098635206726/unknown.png" height="500px"/> 
 
-## What is it?
+## Summary
 A shoppinglist application where you can create and share shoppinglists with friends and family!
 
 
