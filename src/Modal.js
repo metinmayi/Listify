@@ -1,16 +1,24 @@
 import axios from "axios";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import Button from "./Button";
 import LoginContext from "./context/LoginContext";
 
 const Modal = ({ showmodal, setShowmodal, setLists }) => {
+	//Uses the URL for the app
 	const { BaseURL } = useContext(LoginContext);
+	//Checks WHICH user is loggedin
 	const { loggedinUser } = useContext(LoginContext);
+	//Checks if the list added already exists
+	const [listExists, setListExists] = useState(false);
+
+	//The function that toggles modals
 	const toggleModal = (e) => {
 		e.preventDefault();
 		setShowmodal(!showmodal);
 	};
+
+	//The function that refreshes the display of lists
 	const fetchLists = async () => {
 		try {
 			const result = await axios(`${BaseURL}lists/getlists/${loggedinUser}`);
@@ -20,6 +28,7 @@ const Modal = ({ showmodal, setShowmodal, setLists }) => {
 		}
 	};
 
+	//The function that creates a new list
 	const newList = async (e) => {
 		e.preventDefault();
 		const listName = document.getElementById("newListInput").value;
@@ -33,6 +42,10 @@ const Modal = ({ showmodal, setShowmodal, setLists }) => {
 			fetchLists();
 		} catch (error) {
 			console.log(error);
+			setListExists(true);
+			setTimeout(() => {
+				setListExists(false);
+			}, 2000);
 		}
 	};
 	return (
@@ -48,6 +61,11 @@ const Modal = ({ showmodal, setShowmodal, setLists }) => {
 						</Button>
 					</ButtonContainer>
 				</Form>
+				{listExists && (
+					<AlreadyExistsMessage>
+						A list with that name already exists!
+					</AlreadyExistsMessage>
+				)}
 			</ModalContainer>
 		</Background>
 	);
@@ -93,4 +111,9 @@ const ButtonContainer = styled.div`
 const Input = styled.input`
 	width: 95%;
 	height: 3vh;
+`;
+const AlreadyExistsMessage = styled.p`
+	margin-block-start: 0;
+	margin-block-end: 0;
+	color: red;
 `;
