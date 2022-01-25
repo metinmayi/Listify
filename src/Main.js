@@ -12,7 +12,8 @@ const Main = ({ page }) => {
 	const [lists, setLists] = useState([]);
 	const [showmodal, setShowmodal] = useState(false);
 	const { loggedinUser } = useContext(LoginContext);
-	const {selectedList, setSelectedList} = useContext(LoginContext);
+	const { loggedIn, setLoggedIn } = useContext(LoginContext);
+	const { selectedList, setSelectedList } = useContext(LoginContext);
 	//Function that toggles the modal
 	const toggleModal = (e) => {
 		e.preventDefault();
@@ -23,7 +24,7 @@ const Main = ({ page }) => {
 			const result = await axios(`${BaseURL}lists/getlists/${loggedinUser}`);
 			setLists(result.data);
 		} catch (error) {
-			console.log(error);
+			console.log(error.response.status);
 		}
 	};
 	const deleteList = async (id) => {
@@ -40,13 +41,14 @@ const Main = ({ page }) => {
 	}, []);
 	return (
 		<>
+			{!loggedIn && <Navigate to="/" />}
 			{showmodal && (
 				<Modal
 					showmodal={showmodal}
 					setShowmodal={setShowmodal}
 					setLists={setLists}></Modal>
 			)}
-			{selectedList && <Navigate to="/listpage"/>}
+			{selectedList && <Navigate to="/listpage" />}
 			<DoubleButtonsContainer>
 				<Button onClick={toggleModal}>Create New List</Button>
 				<Button variant="secondary">Old Lists</Button>
@@ -89,7 +91,7 @@ const ListContainer = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	border-bottom: 1px solid gray;
-	width:90%;
+	width: 90%;
 `;
 
 const ListHeader = styled.p`
