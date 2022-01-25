@@ -1,5 +1,5 @@
 # React project: Listify - Fullstack project from scratch
-https://listifyapp.netlify.app/
+https://cdn.discordapp.com/attachments/923936691906043965/935545098635206726/unknown.png
 
 ## What is it?
 A shoppinglist application where you can create and share shoppinglists with friends and family!
