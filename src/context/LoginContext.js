@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import axios from "axios";
 axios.defaults.withCredentials = true;
+
 const LoginContext = createContext({});
 
 export const LoginProvider = ({ children }) => {
@@ -20,6 +21,19 @@ export const LoginProvider = ({ children }) => {
 	const [loggedinUser, setLoggedinUser] = useState("");
 	//Stores the selected list
 	const [selectedList, setSelectedList] = useState(false);
+
+	//Any Axios request with error 401 will set loggedin to false
+	axios.interceptors.response.use(
+		(response) => {
+			return response;
+		},
+		(error) => {
+			if (error.response.status === 401) {
+				setLoggedIn(false);
+			}
+			return Promise.reject(error);
+		}
+	);
 
 	//Login Function
 	const loginFunction = async () => {
@@ -50,6 +64,7 @@ export const LoginProvider = ({ children }) => {
 			console.log(error);
 		} finally {
 			setLoggedIn(false);
+			setSelectedList(false);
 		}
 	};
 
