@@ -8,7 +8,7 @@
 * JWT
 
 
-<img src="https://cdn.discordapp.com/attachments/923936691906043965/935545098635206726/unknown.png" height="500px"/>
+<img src="https://cdn.discordapp.com/attachments/923936691906043965/935545098635206726/unknown.png" height="500px"/> 
 
 ## What is it?
 A shoppinglist application where you can create and share shoppinglists with friends and family!
