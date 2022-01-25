@@ -1,13 +1,8 @@
 # React project: Listify - Fullstack project from scratch
-https://cdn.discordapp.com/attachments/923936691906043965/935545098635206726/unknown.png
+<img src="https://cdn.discordapp.com/attachments/923936691906043965/935545098635206726/unknown.png" height="500px"/>
 
 ## What is it?
 A shoppinglist application where you can create and share shoppinglists with friends and family!
-This project is a fullstack project that I've been working on during my free time.
-I use MongoDB as my database, which is connected to my NodeJS Express server. The server handles all communication between my DB and my front-end.
-For security measures, I've decided to encrypt the passwords and authenticate users. The password is encrypted using Bcrypt. Authentication is being taken care of by sending JWT tokens through HTTPonly cookies. In the future I might change from JWT tokens to using sessions, as they give the server the ability to revoke sessions, whereas JWT cannot be revoked.
-
-
 
 Technologies used in this project:
 * React
@@ -15,12 +10,17 @@ Technologies used in this project:
 * MongoDB
 * Express
 
-## Authentication
-Authentication is being handled throught my selfmade API, with JWT tokens stored in HTTP-only cookies.
-Passwords are encrypted using the bcryptjs library.
 
-## API
-I created my own API that I've hosted through Heroku. It can be found here:
+This project is a fullstack project that I've been working on during my free time.
+I use MongoDB as my database, which is connected to my NodeJS Express server. The server handles all communication between my DB and my front-end.
+For security measures, I've decided to encrypt the passwords and authenticate users. The password is encrypted using Bcrypt. Authentication is being taken care of by sending JWT tokens through HTTPonly cookies. In the future I might change from JWT tokens to using sessions, as they give the server the ability to revoke sessions, whereas JWT cannot be revoked.
+
+
+
+
+
+## API/Server
+The server is also made by me, from scratch. It handles all communication between the client and the DB. It also takes care of encryption and authentication.
 https://github.com/metinmayi/Node-API
 
 
