@@ -3,6 +3,11 @@ https://listifyapp.netlify.app/
 
 A shoppinglist application where you can create and share shoppinglists with friends and family!
 
+This project is a fullstack project that I've been working on during my free time.
+I use MongoDB as my database, which is connected to my NodeJS Express server. The server handles all communication between my DB and my front-end.
+For security measures, I've decided to encrypt the passwords and authenticate users. The password is encrypted using Bcrypt. Authentication is being taken care of by sending JWT tokens through HTTPonly cookies. In the future I might change from JWT tokens to using sessions, as they give the server the ability to revoke sessions, whereas JWT cannot be revoked.
+
+
 
 Technologies used in this project:
 * React
