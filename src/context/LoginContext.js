@@ -18,6 +18,8 @@ export const LoginProvider = ({ children }) => {
 	const [errorMessage, setErrorMessage] = useState("");
 	//Stores the name of the logged in user
 	const [loggedinUser, setLoggedinUser] = useState("");
+	//Stores the selected list
+	const [selectedList, setSelectedList] = useState(false);
 
 	//Login Function
 	const loginFunction = async () => {
@@ -104,6 +106,8 @@ export const LoginProvider = ({ children }) => {
 				setLoggedinUser,
 				BaseURL,
 				setErrorMessage,
+				selectedList,
+				setSelectedList
 			}}>
 			{children}
 		</LoginContext.Provider>

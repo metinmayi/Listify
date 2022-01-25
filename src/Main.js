@@ -6,11 +6,13 @@ import LoginContext from "./context/LoginContext.js";
 import MainContainer from "./MainContainer";
 import Modal from "./Modal.js";
 import Button from "./Button.js";
+import { Navigate } from "react-router-dom";
 const Main = ({ page }) => {
 	const { BaseURL } = useContext(LoginContext);
 	const [lists, setLists] = useState([]);
 	const [showmodal, setShowmodal] = useState(false);
 	const { loggedinUser } = useContext(LoginContext);
+	const {selectedList, setSelectedList} = useContext(LoginContext);
 	//Function that toggles the modal
 	const toggleModal = (e) => {
 		e.preventDefault();
@@ -44,6 +46,7 @@ const Main = ({ page }) => {
 					setShowmodal={setShowmodal}
 					setLists={setLists}></Modal>
 			)}
+			{selectedList && <Navigate to="/listpage"/>}
 			<DoubleButtonsContainer>
 				<Button onClick={toggleModal}>Create New List</Button>
 				<Button variant="secondary">Old Lists</Button>
@@ -56,7 +59,7 @@ const Main = ({ page }) => {
 					lists.map((list) => (
 						<ListContainer key={list._id} id={list._id}>
 							{/* Each list gets an OnClick so you can navigate to it later.*/}
-							<div onClick={(e) => console.log(e.target.parentNode)}>
+							<div onClick={(e) => setSelectedList(list._id)}>
 								<ListHeader>{list.title}</ListHeader>
 								{/*Depending on how many items are in your list, it will display it differently */}
 								{list.items.length < 1 ? (
@@ -86,6 +89,7 @@ const ListContainer = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	border-bottom: 1px solid gray;
+	width:90%;
 `;
 
 const ListHeader = styled.p`

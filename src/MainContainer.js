@@ -22,6 +22,7 @@ const ListOfListsContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
+	align-items:center;
 `;
 const ListOfListsTitle = styled.h2`
 	text-align: center;
