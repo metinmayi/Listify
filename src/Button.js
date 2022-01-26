@@ -28,7 +28,7 @@ const Primary = styled.button`
 			: variant === "tertiary"
 			? css`
 					background-color: #fff;
-					border: 1px solid gray;
+					border: 1px solid rgba(0, 0, 0, 0.1);
 			  `
 			: variant === "noMargin"
 			? css`
