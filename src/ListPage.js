@@ -5,10 +5,11 @@ import Header from "./Header";
 import { DoubleButtonsContainer } from "./Main";
 import Button from "./Button";
 import MainContainer from "./MainContainer";
-import { BsCheckLg, BsPlusLg } from "react-icons/bs";
-import { FaTrashAlt } from "react-icons/fa";
+import { BsPlusLg } from "react-icons/bs";
+import ListItem from "./components/ListItem";
+
 import styled from "styled-components";
-import Input from "./Input";
+
 import { Navigate } from "react-router-dom";
 
 const ListPage = () => {
@@ -34,32 +35,12 @@ const ListPage = () => {
 			<MainContainer page="Under Construction">
 				<AddItemDiv>
 					<AddItemInput></AddItemInput>
-					<Button onClick={testfunction}>
+					<Button variant="noMargin" onClick={testfunction}>
 						<BsPlusLg></BsPlusLg>
 					</Button>
 				</AddItemDiv>
 				<Container style={{ width: "80%" }}>
-					<ListItem>
-						<span>Name</span>
-						<div>
-							<BsCheckLg></BsCheckLg>
-							<FaTrashAlt></FaTrashAlt>
-						</div>
-					</ListItem>{" "}
-					<ListItem>
-						<span>Name</span>
-						<div>
-							<BsCheckLg></BsCheckLg>
-							<FaTrashAlt></FaTrashAlt>
-						</div>
-					</ListItem>{" "}
-					<ListItem>
-						<span>Name</span>
-						<div>
-							<BsCheckLg></BsCheckLg>
-							<FaTrashAlt></FaTrashAlt>
-						</div>
-					</ListItem>
+					<ListItem />
 				</Container>
 			</MainContainer>
 			<Footer />
@@ -84,15 +65,9 @@ const AddItemInput = styled.input`
 	width: 70%;
 `;
 
-const ListItem = styled.div`
-	display: flex;
-	justify-content: space-between;
-	font-size: 1.5rem;
-	border-bottom: 1px solid gray;
-`;
-
 const Container = styled.div`
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
+	gap: 1.5rem;
+	margin-top: 1rem;
 `;
