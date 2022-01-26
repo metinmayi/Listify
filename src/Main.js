@@ -12,7 +12,7 @@ const Main = ({ page }) => {
 	const [lists, setLists] = useState([]);
 	const [showmodal, setShowmodal] = useState(false);
 	const { loggedinUser } = useContext(LoginContext);
-	const { loggedIn, setLoggedIn } = useContext(LoginContext);
+	const { loggedIn } = useContext(LoginContext);
 	const { selectedList, setSelectedList } = useContext(LoginContext);
 	//Function that toggles the modal
 	const toggleModal = (e) => {

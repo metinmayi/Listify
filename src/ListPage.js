@@ -41,6 +41,9 @@ const ListPage = () => {
 				</AddItemDiv>
 				<Container style={{ width: "80%" }}>
 					<ListItem />
+					<ListItem />
+					<ListItem />
+					<ListItem variant="checked" />
 				</Container>
 			</MainContainer>
 			<Footer />
@@ -69,5 +72,5 @@ const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 1.5rem;
-	margin-top: 1rem;
+	margin-top: 1.5rem;
 `;
