@@ -13,7 +13,7 @@ export default Button;
 const Primary = styled.button`
 	background-color: #64b9ee;
 	border-radius: 10px;
-	// margin-top: 5px;
+	margin-top: 5px;
 	border: none;
 	height: 5vh;
 	font-size: 1rem;
@@ -25,10 +25,14 @@ const Primary = styled.button`
 			? css`
 					background-color: #e2e54f;
 			  `
-			: variant ==="tertiary" 
+			: variant === "tertiary"
 			? css`
-					background-color:#fff;
-					border: 1px solid gray` 
-				: null}
+					background-color: #fff;
+					border: 1px solid gray;
+			  `
+			: variant === "noMargin"
+			? css`
+					margin-top: 0;
+			  `
+			: null}
 `;
-
