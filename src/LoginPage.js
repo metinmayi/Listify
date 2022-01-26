@@ -105,7 +105,7 @@ const WrongPasswordMessage = styled.p`
 		variant === "goodRegistration"
 			? css`
 					color: green;
-					font-size: 1.5rem;
+					padding: 10px;
 			  `
 			: null}
 `;
