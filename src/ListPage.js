@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import LoginContext from "./context/LoginContext";
 import Footer from "./Footer";
 import Header from "./Header";
@@ -7,20 +7,76 @@ import Button from "./Button";
 import MainContainer from "./MainContainer";
 import { BsPlusLg } from "react-icons/bs";
 import ListItem from "./components/ListItem";
+import axios from "axios";
 
 import styled from "styled-components";
 
 import { Navigate } from "react-router-dom";
 
 const ListPage = () => {
+	const { BaseURL } = useContext(LoginContext);
 	const { selectedList, setSelectedList } = useContext(LoginContext);
 	const { loggedIn } = useContext(LoginContext);
-	const testfunction = () => {
-		console.log("Hej");
+	const [databaseItems, setDatabaseItems] = useState([]);
+	//Function to add an item to the selected lis
+	const addItem = async () => {
+		try {
+			const inputValue = document.getElementById("addItemInput").value;
+			await axios.patch(`${BaseURL}items/add/${selectedList._id}`, {
+				name: inputValue,
+				bought: false,
+			});
+			fetchData();
+		} catch (error) {
+			console.log(error.response);
+		}
+		document.getElementById("addItemInput").value = "";
 	};
+	//Function to update the state of an item
+	const updateItem = async (e) => {
+		const name = e.target.outerText;
+		try {
+			await axios.patch(`${BaseURL}items/update/${selectedList._id}/${name}`);
+			fetchData();
+		} catch (error) {
+			console.log(error);
+		}
+	};
+	//Function to delete items
+	const deleteItem = async (e) => {
+		try {
+			await axios.delete(
+				`${BaseURL}items/delete/${selectedList._id}/${e.target.id}`
+			);
+			fetchData();
+		} catch (error) {
+			console.log(error);
+		}
+	};
+	//Removes the selected list so that it returns you to the list of lists.
 	const backToLists = () => {
 		setSelectedList(false);
 	};
+	//Find a list that has the id and sort it by bought: false first
+	const fetchData = async () => {
+		console.log(selectedList);
+		try {
+			const list = await axios(
+				`${BaseURL}lists/getlistbyid/${selectedList._id}`
+			);
+			console.log(list.data.items);
+			list.data.items.sort((a, b) => a.bought - b.bought);
+			// console.log(sortedlist);
+			setDatabaseItems(list.data.items);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	//Function to retrieve the items
+	useEffect(() => {
+		fetchData();
+	}, []);
 	return (
 		<div className="Page">
 			{!loggedIn && <Navigate to="/" />}
@@ -32,18 +88,36 @@ const ListPage = () => {
 				</Button>
 				<Button variant="secondary">Old Lists</Button>
 			</DoubleButtonsContainer>
-			<MainContainer page="Under Construction">
+			<MainContainer page={selectedList.title}>
 				<AddItemDiv>
-					<AddItemInput></AddItemInput>
-					<Button variant="noMargin" onClick={testfunction}>
+					<AddItemInput id="addItemInput"></AddItemInput>
+					<Button variant="noMargin" onClick={addItem}>
 						<BsPlusLg></BsPlusLg>
 					</Button>
 				</AddItemDiv>
 				<Container style={{ width: "80%" }}>
-					<ListItem />
-					<ListItem />
-					<ListItem />
-					<ListItem variant="checked" />
+					{databaseItems.length > 0 ? (
+						databaseItems.map((dbitem) =>
+							dbitem.bought === false ? (
+								<ListItem
+									name={dbitem.name}
+									key={dbitem.name}
+									updateItem={updateItem}
+									deleteItem={deleteItem}
+								/>
+							) : (
+								<ListItem
+									name={dbitem.name}
+									key={dbitem.name}
+									updateItem={updateItem}
+									deleteItem={deleteItem}
+									variant="checked"
+								/>
+							)
+						)
+					) : (
+						<p>No items dawg</p>
+					)}
 				</Container>
 			</MainContainer>
 			<Footer />

@@ -61,17 +61,17 @@ const Main = ({ page }) => {
 					lists.map((list) => (
 						<ListContainer key={list._id} id={list._id}>
 							{/* Each list gets an OnClick so you can navigate to it later.*/}
-							<div onClick={(e) => setSelectedList(list._id)}>
+							<div onClick={(e) => setSelectedList(list)}>
 								<ListHeader>{list.title}</ListHeader>
 								{/*Depending on how many items are in your list, it will display it differently */}
 								{list.items.length < 1 ? (
 									<ListItems>Empty list</ListItems>
 								) : list.items.length < 2 ? (
-									<ListItems>{`${list.items[0]}`}</ListItems>
+									<ListItems>{`${list.items[0].name}`}</ListItems>
 								) : list.items.length < 3 ? (
-									<ListItems>{`${list.items[0]}, ${list.items[1]}`}</ListItems>
+									<ListItems>{`${list.items[0].name}, ${list.items[1].name}`}</ListItems>
 								) : (
-									<ListItems>{`${list.items[0]}, ${list.items[1]}, ${list.items[2]}...`}</ListItems>
+									<ListItems>{`${list.items[0].name}, ${list.items[1].name}, ${list.items[2].name}...`}</ListItems>
 								)}
 							</div>
 							{/* Each list gets an OnClick so you can delete it*/}

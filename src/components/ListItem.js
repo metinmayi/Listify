@@ -2,14 +2,14 @@ import React from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import styled, { css } from "styled-components";
 
-const ListItem = ({ variant }) => {
+const ListItem = ({ variant, name, updateItem, deleteItem }) => {
 	return (
 		<>
 			<ListItemDiv variant={variant}>
-				<span>Name</span>
-				<div>
-					<TrashCan></TrashCan>
-				</div>
+				<span onClick={updateItem}>{name}</span>
+				<Div id={name} onClick={deleteItem}>
+					<FaTrashAlt style={{ pointerEvents: "none" }}> </FaTrashAlt>
+				</Div>
 			</ListItemDiv>
 		</>
 	);
@@ -25,13 +25,18 @@ const ListItemDiv = styled.div`
 		variant === "checked"
 			? css`
 					text-decoration: line-through;
+					opacity: 0.75;
 			  `
 			: null}
 `;
 
-const TrashCan = styled(FaTrashAlt)`
+// const TrashCan = styled(FaTrashAlt)`
+
+// `;
+const Div = styled.div`
 	color: red;
 	opacity: 0.2;
+
 	&:hover {
 		opacity: 0.75;
 	}
