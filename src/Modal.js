@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Button from "./Button";
 import LoginContext from "./context/LoginContext";
 
-const Modal = ({ showmodal, setShowmodal, setLists }) => {
+const Modal = ({ showmodal, setShowmodal, setLists, modalInputRef }) => {
 	//Uses the URL for the app
 	const { BaseURL } = useContext(LoginContext);
 	//Checks WHICH user is loggedin
@@ -53,7 +53,7 @@ const Modal = ({ showmodal, setShowmodal, setLists }) => {
 			<ModalContainer>
 				<h3>Add new item</h3>
 				<Form action="">
-					<Input type="text" id="newListInput" />
+					<Input type="text" id="newListInput" ref={modalInputRef} />
 					<ButtonContainer>
 						<Button onClick={newList}>Add Item</Button>
 						<Button variant="secondary" onClick={toggleModal}>

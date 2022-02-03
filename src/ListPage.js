@@ -86,7 +86,7 @@ const ListPage = () => {
 				<Button variant="tertiary" onClick={backToLists}>
 					Back to lists
 				</Button>
-				<Button variant="secondary">Old Lists</Button>
+				<Button variant="secondary">Share Lists</Button>
 			</DoubleButtonsContainer>
 			<MainContainer page={selectedList.title}>
 				<AddItemDiv>
@@ -116,7 +116,7 @@ const ListPage = () => {
 							)
 						)
 					) : (
-						<p>No items dawg</p>
+						<p style={{ textAlign: "center" }}>No items found</p>
 					)}
 				</Container>
 			</MainContainer>

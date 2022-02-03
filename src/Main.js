@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import axios from "axios";
 import styled from "styled-components";
@@ -14,10 +14,14 @@ const Main = ({ page }) => {
 	const { loggedinUser } = useContext(LoginContext);
 	const { loggedIn } = useContext(LoginContext);
 	const { selectedList, setSelectedList } = useContext(LoginContext);
+	const modalInputRef = useRef(null);
 	//Function that toggles the modal
 	const toggleModal = (e) => {
 		e.preventDefault();
 		setShowmodal(!showmodal);
+		setTimeout(() => {
+			modalInputRef.current.focus();
+		}, 10);
 	};
 	const fetchLists = async () => {
 		try {
@@ -44,6 +48,7 @@ const Main = ({ page }) => {
 			{!loggedIn && <Navigate to="/" />}
 			{showmodal && (
 				<Modal
+					modalInputRef={modalInputRef}
 					showmodal={showmodal}
 					setShowmodal={setShowmodal}
 					setLists={setLists}></Modal>
@@ -51,7 +56,7 @@ const Main = ({ page }) => {
 			{selectedList && <Navigate to="/listpage" />}
 			<DoubleButtonsContainer>
 				<Button onClick={toggleModal}>Create New List</Button>
-				<Button variant="secondary">Old Lists</Button>
+				<Button variant="secondary">Share Lists</Button>
 			</DoubleButtonsContainer>
 			<MainContainer page={page}>
 				{lists.length < 1 ? (
