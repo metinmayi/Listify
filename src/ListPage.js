@@ -14,10 +14,15 @@ import styled from "styled-components";
 import { Navigate } from "react-router-dom";
 
 const ListPage = () => {
+	//The URL of the website
 	const { BaseURL } = useContext(LoginContext);
+	//The list object that has been clicked. Identified by its _id
 	const { selectedList, setSelectedList } = useContext(LoginContext);
+	//Is there a logged in user?
 	const { loggedIn } = useContext(LoginContext);
+	//State that stores our fetched items belonging to our list.
 	const [databaseItems, setDatabaseItems] = useState([]);
+
 	//Function to add an item to the selected lis
 	const addItem = async () => {
 		try {
@@ -57,7 +62,7 @@ const ListPage = () => {
 	const backToLists = () => {
 		setSelectedList(false);
 	};
-	//Find a list that has the id and sort it by bought: false first
+	//Finds a list that has the same ID as our selectedList._id. Store it inside the setDatabaseItems state.
 	const fetchData = async () => {
 		try {
 			const list = await axios(
