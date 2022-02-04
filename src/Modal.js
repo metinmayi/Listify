@@ -10,6 +10,7 @@ const Modal = ({
 	title,
 	inputID,
 	alreadyExists,
+	primaryButtonText,
 }) => {
 	//The function that toggles modals
 	const toggleModal = (e) => {
@@ -23,7 +24,7 @@ const Modal = ({
 				<Form action="">
 					<Input type="text" id={inputID} ref={modalInputRef} />
 					<ButtonContainer>
-						<Button onClick={onClick}>Add Item</Button>
+						<Button onClick={onClick}>{primaryButtonText}</Button>
 						<Button variant="secondary" onClick={toggleModal}>
 							Close
 						</Button>
