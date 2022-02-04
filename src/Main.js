@@ -93,7 +93,7 @@ const Main = ({ page }) => {
 			{selectedList && <Navigate to="/listpage" />}
 			<DoubleButtonsContainer>
 				<Button onClick={toggleModal}>Create New List</Button>
-				<Button variant="secondary">Share Lists</Button>
+				<Button variant="secondary">FAQ</Button>
 			</DoubleButtonsContainer>
 			<MainContainer page={page}>
 				{lists.length < 1 ? (
