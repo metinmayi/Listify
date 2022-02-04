@@ -10,18 +10,40 @@ import { Navigate } from "react-router-dom";
 const Main = ({ page }) => {
 	const { BaseURL } = useContext(LoginContext);
 	const [lists, setLists] = useState([]);
-	const [showmodal, setShowmodal] = useState(false);
+	const [showListModal, setShowListModal] = useState(false);
 	const { loggedinUser } = useContext(LoginContext);
 	const { loggedIn } = useContext(LoginContext);
 	const { selectedList, setSelectedList } = useContext(LoginContext);
 	const modalInputRef = useRef(null);
+	//Checks if the list added already exists
+	const [listExists, setListExists] = useState(false);
 	//Function that toggles the modal
 	const toggleModal = (e) => {
 		e.preventDefault();
-		setShowmodal(!showmodal);
+		setShowListModal(!showListModal);
 		setTimeout(() => {
 			modalInputRef.current.focus();
 		}, 10);
+	};
+	//The function that creates a new list
+	const newList = async (e) => {
+		e.preventDefault();
+		const listName = document.getElementById("newListInput").value;
+		try {
+			await axios.post(`${BaseURL}lists/createlist/${loggedinUser}`, {
+				username: loggedinUser,
+				title: listName,
+			});
+			//Close the modal
+			setShowListModal(!showListModal);
+			fetchLists();
+		} catch (error) {
+			console.log(error);
+			setListExists(true);
+			setTimeout(() => {
+				setListExists(false);
+			}, 2000);
+		}
 	};
 	const fetchLists = async () => {
 		try {
@@ -46,12 +68,15 @@ const Main = ({ page }) => {
 	return (
 		<>
 			{!loggedIn && <Navigate to="/" />}
-			{showmodal && (
+			{showListModal && (
 				<Modal
 					modalInputRef={modalInputRef}
-					showmodal={showmodal}
-					setShowmodal={setShowmodal}
-					setLists={setLists}></Modal>
+					modalTrigger={showListModal}
+					setModalTrigger={setShowListModal}
+					onClick={newList}
+					title="Create a new list"
+					inputID="newListInput"
+					alreadyExists={listExists}></Modal>
 			)}
 			{selectedList && <Navigate to="/listpage" />}
 			<DoubleButtonsContainer>

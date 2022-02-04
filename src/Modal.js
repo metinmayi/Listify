@@ -1,67 +1,35 @@
-import axios from "axios";
-import React, { useContext, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import Button from "./Button";
-import LoginContext from "./context/LoginContext";
 
-const Modal = ({ showmodal, setShowmodal, setLists, modalInputRef }) => {
-	//Uses the URL for the app
-	const { BaseURL } = useContext(LoginContext);
-	//Checks WHICH user is loggedin
-	const { loggedinUser } = useContext(LoginContext);
-	//Checks if the list added already exists
-	const [listExists, setListExists] = useState(false);
-
+const Modal = ({
+	modalTrigger,
+	setModalTrigger,
+	onClick,
+	modalInputRef,
+	title,
+	inputID,
+	alreadyExists,
+}) => {
 	//The function that toggles modals
 	const toggleModal = (e) => {
 		e.preventDefault();
-		setShowmodal(!showmodal);
-	};
-
-	//The function that refreshes the display of lists
-	const fetchLists = async () => {
-		try {
-			const result = await axios(`${BaseURL}lists/getlists/${loggedinUser}`);
-			setLists(result.data);
-		} catch (error) {
-			console.log(error);
-		}
-	};
-
-	//The function that creates a new list
-	const newList = async (e) => {
-		e.preventDefault();
-		const listName = document.getElementById("newListInput").value;
-		try {
-			await axios.post(`${BaseURL}lists/createlist/${loggedinUser}`, {
-				username: loggedinUser,
-				title: listName,
-			});
-			//Close the modal
-			setShowmodal(!showmodal);
-			fetchLists();
-		} catch (error) {
-			console.log(error);
-			setListExists(true);
-			setTimeout(() => {
-				setListExists(false);
-			}, 2000);
-		}
+		setModalTrigger(!modalTrigger);
 	};
 	return (
 		<Background>
 			<ModalContainer>
-				<h3>Add new item</h3>
+				<h3>{title}</h3>
 				<Form action="">
-					<Input type="text" id="newListInput" ref={modalInputRef} />
+					<Input type="text" id={inputID} ref={modalInputRef} />
 					<ButtonContainer>
-						<Button onClick={newList}>Add Item</Button>
+						<Button onClick={onClick}>Add Item</Button>
 						<Button variant="secondary" onClick={toggleModal}>
 							Close
 						</Button>
 					</ButtonContainer>
 				</Form>
-				{listExists && (
+				{alreadyExists && (
 					<AlreadyExistsMessage>
 						A list with that name already exists!
 					</AlreadyExistsMessage>
