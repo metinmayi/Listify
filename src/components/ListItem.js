@@ -21,6 +21,7 @@ const ListItemDiv = styled.div`
 	justify-content: space-between;
 	font-size: 1.5rem;
 	border-bottom: 1px solid gray;
+	cursor: pointer;
 	${({ variant }) =>
 		variant === "checked"
 			? css`
