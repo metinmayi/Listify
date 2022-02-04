@@ -8,13 +8,21 @@ import Modal from "./Modal.js";
 import Button from "./Button.js";
 import { Navigate } from "react-router-dom";
 const Main = ({ page }) => {
+	//The base URL of the requests.
 	const { BaseURL } = useContext(LoginContext);
+	//The state containing the fetched list from the database. Either created by the user, or shared to the user.
 	const [lists, setLists] = useState([]);
+	//The state that triggers visibility of the ListModal (The modal that allows users to create lists.)
 	const [showListModal, setShowListModal] = useState(false);
-	const { loggedinUser } = useContext(LoginContext);
-	const { loggedIn } = useContext(LoginContext);
-	const { selectedList, setSelectedList } = useContext(LoginContext);
+	//A reference to the modals input box. Used to .focus() it on toggle.
 	const modalInputRef = useRef(null);
+	//The state that holds the currently logged in user.
+	const { loggedinUser } = useContext(LoginContext);
+	//The state that holds IF a user is logged in or not //PERHAPS MERGE WITH ABOVE?
+	const { loggedIn } = useContext(LoginContext);
+	//The state that holds which list was specifically selected.
+	const { selectedList, setSelectedList } = useContext(LoginContext);
+
 	//Checks if the list added already exists
 	const [listExists, setListExists] = useState(false);
 	//Function that toggles the modal
@@ -25,7 +33,7 @@ const Main = ({ page }) => {
 			modalInputRef.current.focus();
 		}, 10);
 	};
-	//The function that creates a new list
+	//Function that creates a new list.
 	const newList = async (e) => {
 		e.preventDefault();
 		const listName = document.getElementById("newListInput").value;
@@ -45,6 +53,7 @@ const Main = ({ page }) => {
 			}, 2000);
 		}
 	};
+	//Function that retrieves all lists belonging or shared to a user.
 	const fetchLists = async () => {
 		try {
 			const result = await axios(`${BaseURL}lists/getlists/${loggedinUser}`);
@@ -53,6 +62,7 @@ const Main = ({ page }) => {
 			console.log(error.response.status);
 		}
 	};
+	//Function that deletes a list.
 	const deleteList = async (id) => {
 		try {
 			await axios.delete(`${BaseURL}lists/delete/${id}`);
@@ -61,6 +71,7 @@ const Main = ({ page }) => {
 			console.log(error.message);
 		}
 	};
+	//Invokes the fetchLists() ^ on component load
 	useEffect(() => {
 		fetchLists();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -76,7 +87,8 @@ const Main = ({ page }) => {
 					onClick={newList}
 					title="Create a new list"
 					inputID="newListInput"
-					alreadyExists={listExists}></Modal>
+					alreadyExists={listExists}
+					primaryButtonText="Create List"></Modal>
 			)}
 			{selectedList && <Navigate to="/listpage" />}
 			<DoubleButtonsContainer>
