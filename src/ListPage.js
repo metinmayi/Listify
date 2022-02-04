@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import LoginContext from "./context/LoginContext";
 import Footer from "./Footer";
 import Header from "./Header";
@@ -8,7 +8,7 @@ import MainContainer from "./MainContainer";
 import { BsPlusLg } from "react-icons/bs";
 import ListItem from "./components/ListItem";
 import axios from "axios";
-
+import Modal from "./Modal";
 import styled from "styled-components";
 
 import { Navigate } from "react-router-dom";
@@ -22,6 +22,10 @@ const ListPage = () => {
 	const { loggedIn } = useContext(LoginContext);
 	//State that stores our fetched items belonging to our list.
 	const [databaseItems, setDatabaseItems] = useState([]);
+	//State that toggles the modal
+	const [showShareModal, setShowShareModal] = useState(false);
+	//Reference to the modal input. Used to .focus() upon modal toggle
+	const shareModalInput = useRef(null);
 
 	//Function to add an item to the selected lis
 	const addItem = async () => {
@@ -75,21 +79,42 @@ const ListPage = () => {
 			console.log(error);
 		}
 	};
+	//Toggles the ShareModal
+	const toggleModal = (e) => {
+		e.preventDefault();
+		setShowShareModal(!showShareModal);
+		setTimeout(() => {
+			shareModalInput.current.focus();
+		}, 10);
+	};
 
-	//Function to retrieve the items
+	//Calls on fetchData ^ on component render.
 	useEffect(() => {
 		fetchData();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 	return (
 		<div className="Page">
 			{!loggedIn && <Navigate to="/" />}
 			{!selectedList && <Navigate to="/mainpage" />}
+			{showShareModal && (
+				<Modal
+					modalTrigger={showShareModal}
+					setModalTrigger={setShowShareModal}
+					onClick={() => console.log("click")}
+					modalInputRef={shareModalInput}
+					title="Share list with:"
+					inputID="shareWithID"
+					primaryButtonText="Share"></Modal>
+			)}
 			<Header />
 			<DoubleButtonsContainer>
 				<Button variant="tertiary" onClick={backToLists}>
 					Back to lists
 				</Button>
-				<Button variant="secondary">Share Lists</Button>
+				<Button variant="secondary" onClick={toggleModal}>
+					Share List
+				</Button>
 			</DoubleButtonsContainer>
 			<MainContainer page={selectedList.title}>
 				<AddItemDiv>
