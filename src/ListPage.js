@@ -59,12 +59,10 @@ const ListPage = () => {
 	};
 	//Find a list that has the id and sort it by bought: false first
 	const fetchData = async () => {
-		console.log(selectedList);
 		try {
 			const list = await axios(
 				`${BaseURL}lists/getlistbyid/${selectedList._id}`
 			);
-			console.log(list.data.items);
 			list.data.items.sort((a, b) => a.bought - b.bought);
 			// console.log(sortedlist);
 			setDatabaseItems(list.data.items);
