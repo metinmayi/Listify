@@ -39,7 +39,7 @@ const RegisterPage = () => {
 			</RegistrationForm>
 			<StyledLink to="/">Back to mainpage</StyledLink>
 			{registrationError.length > 0 && (
-				<p style={{ color: "red" }}>{registrationError}</p>
+				<p style={{ color: "red", textAlign: "center" }}>{registrationError}</p>
 			)}
 
 			<Footer></Footer>
